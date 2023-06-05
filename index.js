@@ -32,10 +32,10 @@ app.use(function(req, res, next) {
 // };
 
 // app.use(cors(corsOptions));
-// app.use(express.static('frontend'))
-// app.get('/', function(req, res) {
-//   res.sendFile(__dirname + '/index.html');
-// });
+app.use(express.static('frontend'))
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
+});
 
 app.use(express.json())
 //use routes
