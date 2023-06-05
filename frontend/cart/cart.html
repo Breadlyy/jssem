@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./cart.css">
+    <link rel="stylesheet" href="../products/product.css">
+    <title>Cart</title>
+</head>
+<body>
+  <script>
+    var token = localStorage.getItem('jwtToken');
+          var isAuthenticated = token !== null && token !== undefined && token !== '';
+          if (!isAuthenticated)
+          {
+            window.location.href = '../index.html';
+          }
+  </script>
+    <header>
+      <canvas id="logoCanvas" width="400" height="200"></canvas>
+
+        <script>
+          const canvas = document.getElementById('logoCanvas');
+          const ctx = canvas.getContext('2d');
+        
+          // Setting logo styles
+          const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+          gradient.addColorStop(0, '#00ff00');
+          gradient.addColorStop(1, '#ff00ff');
+          ctx.fillStyle = gradient;
+          ctx.font = 'bold 48px Arial';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+        
+          // logo's text
+          const text = 'cybertech';
+        
+          // Rendering distorted text
+          const x = canvas.width / 2;
+          const y = canvas.height / 2;
+          const distortion = 22;
+          let gradientOffset = 0;
+        
+          function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+            // Updating gradient position
+            gradientOffset += 0.01;
+            if (gradientOffset > 1) {
+              gradientOffset = 0;
+            }
+        
+            // apply gradient to the text
+            const gradientWithOffset = ctx.createLinearGradient(
+              0,
+              0,
+              canvas.width,
+              0
+            );
+            gradientWithOffset.addColorStop(0, '#ff0000');
+            gradientWithOffset.addColorStop(1, '#00ffff');
+            gradientWithOffset.addColorStop(gradientOffset, '#ffffff');
+            ctx.fillStyle = gradientWithOffset;
+        
+            //Rendering distorted text
+            ctx.save();
+            ctx.translate(x, y);
+        
+            for (let i = 0; i < text.length; i++) {
+              const char = text[i];
+              const charX = (i - text.length / 2) * distortion;
+              ctx.fillText(char, charX, 0);
+            }
+        
+            ctx.restore();
+        
+            // request for the next animation frame
+            requestAnimationFrame(draw);
+          }
+        
+          // Animation starter
+          draw();
+        </script>
+   <ul>
+    <li><a class="menu" href="/">Main</a></li>
+    <li><a class="menu" href="../products/product.html">Product</a></li>
+    <li><a class="content" href="../cart/cart.html">Cart</a></li>
+    <li><a class="content" href="../profile/profile.html">Profile</a></li>
+   </ul>
+    </header>
+    <div id="products">
+    <div id="cart">
+
+    </div>
+  </div>
+  <br>  
+    <div class="final_price">
+   
+    </div>
+    <div class="order">
+      <button class="button" onclick="order()">Order</button>
+    </div>
+    <script src="./cart.js"></script>
+    <script>
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const cartList = document.getElementById('cart');
+    const goods = document.querySelector('.final_price')
+
+    // Очищаем список товаров в корзине
+    let carthtml = '';
+    let price = 0; 
+    debugger 
+    // Добавляем каждый товар в корзине в список
+    cartItems.forEach(function(item) {
+      carthtml += `
+      <li class="products_element">
+                <span class="products_element__name">${item.name}</span>
+                <img class="products_element__img" src="${item.img}"/>
+                <span class="products_element__price">${item.price}</span>
+      </li>
+      `;
+     price+=parseInt(item.price)
+    });
+    const html = `
+        <ul class="cart_container">
+            ${carthtml}
+        </ul>
+        `;
+   cartList.innerHTML = html
+     goods.textContent = `Final price: ${price}$`
+    </script>
+   
+    <script>
+        var token = localStorage.getItem('jwtToken');
+        var isAuthenticated = token !== null && token !== undefined && token !== '';
+        if (isAuthenticated) {
+    // Пользователь авторизован, отобразить контент
+    var links = document.querySelectorAll('.content')
+      links[0].style.display = 'block'
+      links[1].style.display = 'block'
+    } else {
+    // Пользователь не авторизован, скрыть контент
+    var links = document.querySelectorAll('.content')
+      links[0].style.display = 'none'
+      links[1].style.display = 'none'
+    }
+    </script>
+    
+    </body>
+    </html>

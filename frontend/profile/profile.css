@@ -1,0 +1,8 @@
+.profile
+{
+    overflow: auto;
+    display: grid;
+    padding: 100px 0 100px 44%;
+    margin: auto;
+    margin-top: 500px;
+}

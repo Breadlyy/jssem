@@ -1,0 +1,209 @@
+:root
+{
+    background-color: #f4f4f4;
+    --box-shadow:
+    0 16px 24px 2px rgba(33,37,41,.02),
+    0 6px 30px 5px rgba(33,37,41,.04),
+    0 8px 10px -5px rgba(33,37,41,1);
+    --border-radius: 4px;
+}
+img
+{
+    width: 300px;
+}
+.menu
+{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.menu a{
+    display: block;
+    margin: 0;
+    padding: 5px;
+    border-radius: 2px;
+    width: 75px;
+    text-align: center;
+}
+.menu a:hover{
+    background-color: lightgrey;
+}
+.slideshow-container
+{
+    overflow: auto;
+    display: grid;
+    padding: 100px 0 100px 44%;
+    margin: auto;
+
+}
+.fade{
+    transition: display 0.3s ease-in-out;
+}
+.fade img
+{
+    transition: display 1s ease-in-out;
+    height: 300px;
+}
+
+.next
+{
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev:hover, next:hover{
+    background-color: rgba(0,0,0,0.8);
+}
+.text
+{
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top:0;
+}
+
+.dot
+{
+    cursor: pointer;
+    height: 13px;
+    width: 15px;
+    margin:0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot:active
+{
+    background-color: #717171;
+}
+
+.dotlist{
+
+    width: 31%;
+
+}
+
+
+body
+{
+    min-height: 200vh;
+}
+header
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+}
+header .logo
+{
+    position: relative;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+header ul
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li
+{
+    position: relative;
+    list-style: none;
+}
+header ul li a
+{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: 0.6s;
+    
+}
+.check {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 20px;
+    background: rgb(29, 29, 29);
+    cursor: pointer;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: ease-in 0.5s;
+}
+input[type="checkbox"]:checked~.check {
+    background-color: #fff;
+    box-shadow: 0 0 0;
+}
+input[type="checkbox"]:checked~.check::before {
+    transform: translateX(-50px);
+}
+.check::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: #fff;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transition: 0.5s;
+    margin-right: 30px;
+}
+input[type="checkbox"]:checked~.check::after {
+    transform: translateX( 0px);
+}
+.check::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: rgb(29, 29, 29);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transition: 0.5s;
+    transform: translateX( 50px);
+}
+input#switcher
+{
+    margin-left: 50px;
+}
+.prev,
+.next {
+  position: absolute;
+  top: 33%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.prev {
+  left: 10px;
+  margin-left: 41.7%;
+}
+
+.next {
+  right: 10px;
+  margin-right: 38%;
+}

@@ -1,0 +1,27 @@
+.cart
+{
+    display: table-column;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    width: 80%;
+    max-width: 400px;
+    width: 200px;
+    margin: auto;
+}
+.cart_container
+{
+     width: 700px;
+     margin-left: 650px;
+}
+.button {
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
