@@ -94,7 +94,7 @@ const sendHttpRequest = (method, url, data) => {
     return promise;
   };
   const sendData = (firstName, lastName, emailVal, phoneVal, password) => {
-    sendHttpRequest('POST', 'http://localhost:3000/api/registration', {
+    sendHttpRequest('POST', '/api/registration', {
       firstname: firstName, 
       lastname: lastName, 
       email:  emailVal,

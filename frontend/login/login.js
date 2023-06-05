@@ -31,7 +31,7 @@ let form = document.querySelector('.js-form'),
         inputEmail.classList.remove('error');
     }
     //sending user's data on server for log in
-    fetch('http://localhost:3000/api/login', {
+    fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -89,7 +89,7 @@ let form = document.querySelector('.js-form'),
         return promise;
       };
       const sendData = ( emailVal, password) => {
-        sendHttpRequest('POST', 'http://localhost:3000/api/login', {
+        sendHttpRequest('POST', '/api/login', {
             email: emailVal, 
             pass: password
         })
@@ -103,7 +103,7 @@ let form = document.querySelector('.js-form'),
       };
       const check = (token) =>
       {
-        sendHttpRequest('GET', 'http://localhost:3000/api/check',
+        sendHttpRequest('GET', '/api/check',
         {
           token: token
         })
